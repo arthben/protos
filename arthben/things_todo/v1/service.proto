@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package arthben.things_todo.v1;
+option go_package = "./v1;things_todo";
+
+
+service ThingsTodoService {
+    rpc TodosList(TodosListRequest) returns (TodosListResponse);
+    rpc AddTodo(AddTodoRequest) returns (AddTodoResponse);
+}
+
+message TodoItem {
+    string id = 1;
+    string todo = 2;
+    string details = 3;
+    string created_date = 4;
+}
+
+message TodosListRequest {}
+
+message TodosListResponse {
+    repeated TodoItem todoslist = 1;
+}
+
+message AddTodoRequest {
+    string todo = 1;
+    string details = 2;
+}
+
+message AddTodoResponse {
+  bool is_success = 1;
+}
